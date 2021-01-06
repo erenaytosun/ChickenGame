@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Won : MonoBehaviour
 {
+    [SerializeField] private Button nextButton;
 
-    public bool SahneGecis(string a)
+    private void Start()
     {
-        Application.LoadLevel(a);
-        return true;
+        nextButton.onClick.AddListener(NextLevel);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Level1");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }   
 
 

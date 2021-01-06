@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class speaker : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class speaker : MonoBehaviour
     public GameObject tavuk;
     public GameObject hoparlör;
 
+    public int angle;
+
     void Start()
     {
-        
+   
+
     }
 
     /*void Update()
@@ -46,17 +50,25 @@ public class speaker : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject == this.gameObject)
+                if (hit.transform.gameObject == this.hoparlör.gameObject)
                 {
-                    if (this.tavuk.transform.position.y < 6.2f && this.tavuk.transform.position.y > -6.2f && this.tavuk.transform.position.x < 3.2f && this.tavuk.transform.position.x > -3.2f)
+                    if (this.tavuk.transform.position.y < 9.3f && this.tavuk.transform.position.y > -9.3f && this.tavuk.transform.position.x < 4.5f && this.tavuk.transform.position.x > -4.5f)
                     {
                         tavuk.transform.position += (hoparlör.transform.forward) / Vector3.Distance(10*(this.tavuk.transform.position), (hoparlör.transform.position)*10) * Time.deltaTime * 100;
-                        //Debug.Log("aaaa");
+                        
+                        if(hoparlör.transform.rotation.x ==  0)
+                        {
+                            tavuk.transform.eulerAngles = new Vector3(180, 90, -90);
+                        }
+                            
+                        else
+                            tavuk.transform.eulerAngles = new Vector3(hoparlör.transform.eulerAngles.x, 90, -90);
                     }
 
                     else
                     {
-                        Application.LoadLevel("Failed");
+                        SceneManager.LoadScene("Failed");
+                       
                     }
 
 
@@ -68,7 +80,7 @@ public class speaker : MonoBehaviour
     private void OnCollisionEnter(Collision obj)
     {
         //Debug.Log("hoparlör carpisma gerceklesti..");
-        Application.LoadLevel("Failed");
+        SceneManager.LoadScene("Failed");
         
     }
 
