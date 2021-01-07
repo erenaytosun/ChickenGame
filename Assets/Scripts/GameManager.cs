@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static bool isGameStarted = false;
     public static bool isGameEnded = false;
+
+    public int levelNo;
+
     private void Awake()
     {
         if (instance == null)
@@ -32,13 +35,16 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
+        PlayerPrefs.SetInt("level", 3);
+        levelNo = PlayerPrefs.GetInt("level");
+
+        gamePanel.SetActive(true);
         chickenControl = chicken.GetComponent<ChickenController>();
+
         pauseButton.onClick.AddListener(Pause);
         resumeButton.onClick.AddListener(Resume);
         menuButton.onClick.AddListener(Menu);
         retryButton.onClick.AddListener(Retry);
-
-        isGameStarted = true;
     }
 
     void Update()
@@ -46,7 +52,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "score: " + chickenControl.totalScore;
     }
 
-    void Pause()
+    public void Pause()
     {
         pause.SetActive(false);
         pausePanel.SetActive(true);
@@ -54,7 +60,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    void Resume()
+    public void Resume()
     {
         Time.timeScale = 1f;
 
@@ -62,13 +68,13 @@ public class GameManager : MonoBehaviour
         pause.SetActive(true);
     }
 
-    void Retry()
+    public void Retry()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(levelNo);
     }
 
-    void Menu()
+    public void Menu()
     {
         Time.timeScale = 1f;
     }
@@ -76,6 +82,9 @@ public class GameManager : MonoBehaviour
     public void Failed()
     {
         falseIcon.SetActive(false);
+
+        isGameEnded = false;
+
         SceneManager.LoadScene("Failed");
     }
 

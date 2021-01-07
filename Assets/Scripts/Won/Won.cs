@@ -8,6 +8,8 @@ public class Won : MonoBehaviour
 {
     [SerializeField] private Button nextButton;
 
+    private int level;
+
     private void Start()
     {
         nextButton.onClick.AddListener(NextLevel);
@@ -15,8 +17,9 @@ public class Won : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene("Level1");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        level = PlayerPrefs.GetInt("level");
+
+        //SceneManager.LoadScene(level + 1); 
     }   
 
 

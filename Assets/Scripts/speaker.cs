@@ -35,7 +35,10 @@ public class speaker : MonoBehaviour
                 {
                     if (this.tavuk.transform.position.y < 9.3f && this.tavuk.transform.position.y > -9.3f && this.tavuk.transform.position.x < 4.5f && this.tavuk.transform.position.x > -4.5f)
                     {
-                        tavuk.transform.position += (hoparlör.transform.forward) / Vector3.Distance(10 * (this.tavuk.transform.position), (hoparlör.transform.position) * 10) * Time.deltaTime * 150;
+                        if(!ChickenController.collisionWithMud)
+                            tavuk.transform.position += (hoparlör.transform.forward) / Vector3.Distance(8 * (this.tavuk.transform.position), (hoparlör.transform.position) * 8) * Time.deltaTime * 175;
+                        else
+                            tavuk.transform.position += (hoparlör.transform.forward) / Vector3.Distance(this.tavuk.transform.position*8, hoparlör.transform.position*8) * Time.deltaTime * 50;
 
                         if (hoparlör.transform.rotation.x == 0)
                         {
@@ -67,7 +70,6 @@ public class speaker : MonoBehaviour
 
             GameManager.instance.falseIcon.SetActive(true);
             timeBarScript.enabled = false;
-          
 
             GameManager.isGameEnded = true;
             GameManager.instance.Invoke("Failed", 1.5f);

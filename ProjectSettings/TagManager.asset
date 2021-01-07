@@ -8,6 +8,7 @@ TagManager:
   - coop
   - speaker
   - chicken
+  - mud
   layers:
   - Default
   - TransparentFX

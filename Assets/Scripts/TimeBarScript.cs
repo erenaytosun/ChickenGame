@@ -27,7 +27,7 @@ public class TimeBarScript : MonoBehaviour
         else
         {
             timesUpText.SetActive(true);
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             GameManager.instance.Invoke("Failed", 1.5f);
         }
     }

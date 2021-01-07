@@ -11,6 +11,7 @@ public class ChickenController : MonoBehaviour
     [SerializeField] private GameObject timeBar;
     TimeBarScript timeBarScript;
 
+    public static bool collisionWithMud = false;
     private void Start()
     {
         timeBarScript = timeBar.GetComponent<TimeBarScript>();
@@ -31,7 +32,21 @@ public class ChickenController : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        if (col.gameObject.tag == "mud")
+        {
+            collisionWithMud = true;
+        }
+
     }
+
+    private void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "mud")
+        {
+            collisionWithMud = false;
+        }
+    }
+
     void AddScore(int score)
     {
         totalScore += score;

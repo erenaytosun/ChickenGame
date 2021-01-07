@@ -64,15 +64,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GrassRoadRace\Script\CameraMove.cs" />
+    <Compile Include="Assets\Packages\GrassRoadRace\Script\CameraMove.cs" />
     <Compile Include="Assets\Scripts\ChickenController.cs" />
     <Compile Include="Assets\Scripts\Failed\Failed.cs" />
-    <Compile Include="Assets\Scripts\FinalController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Play.cs" />
     <Compile Include="Assets\Scripts\TimeBarScript.cs" />
     <Compile Include="Assets\Scripts\Won\Won.cs" />
     <Compile Include="Assets\Scripts\speaker.cs" />
-    <None Include="Assets\LowpolyVegetationPackFree\Readme.txt" />
     <Reference Include="UnityEngine">
       <HintPath>D:/My Games/2019.4.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
