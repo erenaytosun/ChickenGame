@@ -19,17 +19,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
 
     [SerializeField] private GameObject pause;
+    public GameObject trueIcon;
+    public GameObject falseIcon;
 
-
-
-    void Start()
+    public static GameManager instance;
+    public static bool isGameStarted = false;
+    public static bool isGameEnded = false;
+    private void Awake()
     {
-        chickenControl = chicken.GetComponent<ChickenController>();
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
 
+        chickenControl = chicken.GetComponent<ChickenController>();
         pauseButton.onClick.AddListener(Pause);
         resumeButton.onClick.AddListener(Resume);
         menuButton.onClick.AddListener(Menu);
         retryButton.onClick.AddListener(Retry);
+
+        isGameStarted = true;
     }
 
     void Update()
@@ -62,5 +71,17 @@ public class GameManager : MonoBehaviour
     void Menu()
     {
         Time.timeScale = 1f;
+    }
+
+    public void Failed()
+    {
+        falseIcon.SetActive(false);
+        SceneManager.LoadScene("Failed");
+    }
+
+    public void Won()
+    {
+        trueIcon.SetActive(false);
+        SceneManager.LoadScene("Won");
     }
 }

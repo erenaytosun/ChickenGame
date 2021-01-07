@@ -67,10 +67,10 @@
     <Compile Include="Assets\GrassRoadRace\Script\CameraMove.cs" />
     <Compile Include="Assets\Scripts\ChickenController.cs" />
     <Compile Include="Assets\Scripts\Failed\Failed.cs" />
+    <Compile Include="Assets\Scripts\FinalController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\TimeBarScript.cs" />
     <Compile Include="Assets\Scripts\Won\Won.cs" />
-    <Compile Include="Assets\Scripts\ringCollision.cs" />
     <Compile Include="Assets\Scripts\speaker.cs" />
     <None Include="Assets\LowpolyVegetationPackFree\Readme.txt" />
     <Reference Include="UnityEngine">
